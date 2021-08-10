@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <title>Dr. Doom Password Generator</title>
+        <meta name="description" content="A password generator based on Dr. Doom's variable naming.">
+        <meta name="author" content="Chris Kuehn">
+        <style type="text/css">
+            html {
+                background-color: black;
+                font-family: sans-serif;
+                color: gray;
+                text-align: center;
+            }
+            a {
+                color: white;
+            }
+            div#password {
+                padding: 0.5em 0.25em;
+                background-color: rgb(55,100,55);
+                font-family: monospace;
+                color: white;
+                font-size: 250%;
+                word-wrap: break-word;
+            }
+            button {
+                margin-top: 1em;
+                border: none;
+                background-color: rgb(55,100,55);
+                color: white;
+                padding: 0.5em 1em;
+                font-size: 150%;
+                font-weight: bold;
+            }
+
+        </style>
+        <script>
+            function randomItem(itemList) {
+                return itemList[Math.floor(Math.random() * itemList.length)];
+            };
+            function doomPass() {
+                var minLength = 48;
+                var maxLength = 72;
+
+                // Define the characters for each slot. We could get crazy
+                // here with diacritics, but such silliness is beneath Doom.
+                var characters = {
+                    'd': ['D', 'd'],
+                    'o': ['o', 'O', '0'],
+                    'm': ['m', 'M']
+                };
+                
+                // The password always starts with a d character.
+                var password = randomItem(characters['d']);
+
+                // ...then includes some number of o's. In this case, enough to fit
+                // within the length parameters.
+                oCount = Math.floor(Math.random() * (maxLength - minLength) + minLength - 2)
+                for (let i = 0; i < oCount; i++) {
+                    password += randomItem(characters['o']);
+                }
+
+                // And concludes with a glorious m, befitting Doom.
+                password += randomItem(characters['m']);
+                document.getElementById('password').innerHTML = password;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Dr. Doom Password Generator</h1>
+        <p>Your Doom-approved password:</p>
+        <div id="password"></div>
+        <button onclick="doomPass()">Refresh</button>
+
+        <script>
+            doomPass();
+        </script>
+
+        <p>Inspired by <a href="https://retcon-punch.com/2016/02/02/the-unbeatable-squirrel-girl-4-2/when-do-you-compromise/#main"><i>The Unbeatable Squirrel Girl (2015)</i> #4</a>.</p>
+
+    </body>
+</html>
