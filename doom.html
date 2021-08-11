@@ -55,7 +55,7 @@
 
                 // ...then includes some number of o's. In this case, enough to fit
                 // within the length parameters.
-                oCount = Math.floor(Math.random() * (maxLength - minLength) + minLength - 2)
+                var oCount = Math.floor(Math.random() * (maxLength - minLength) + minLength - 2)
                 for (let i = 0; i < oCount; i++) {
                     password += randomItem(characters['o']);
                 }
@@ -71,12 +71,7 @@
         <p>Your Doom-approved password:</p>
         <div id="password"></div>
         <button onclick="doomPass()">Refresh</button>
-
-        <script>
-            doomPass();
-        </script>
-
         <p>Inspired by <a href="https://retcon-punch.com/2016/02/02/the-unbeatable-squirrel-girl-4-2/when-do-you-compromise/#main"><i>The Unbeatable Squirrel Girl (2015)</i> #4</a>.</p>
-
+        <script>doomPass();</script>
     </body>
 </html>
