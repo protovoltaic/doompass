@@ -39,23 +39,23 @@
                 return itemList[Math.floor(Math.random() * itemList.length)];
             };
             function doomPass() {
-                var minLength = 48;
-                var maxLength = 72;
+                let minLength = 48;
+                let maxLength = 72;
 
                 // Define the characters for each slot. We could get crazy
                 // here with diacritics, but such silliness is beneath Doom.
-                var characters = {
+                let characters = {
                     'd': ['D', 'd'],
                     'o': ['o', 'O', '0'],
                     'm': ['m', 'M']
                 };
 
                 // The password always starts with a d character.
-                var password = randomItem(characters['d']);
+                let password = randomItem(characters['d']);
 
                 // ...then includes some number of o's. In this case, enough to fit
                 // within the length parameters.
-                var oCount = Math.floor(Math.random() * (maxLength - minLength) + minLength - 2)
+                let oCount = Math.floor(Math.random() * (maxLength - minLength) + minLength - 2)
                 for (let i = 0; i < oCount; i++) {
                     password += randomItem(characters['o']);
                 }
